@@ -4,16 +4,25 @@ import { Square } from './components/Square'
 import { TURNS, initialBoard, initialTurn } from './constants.js'
 import { checkWinner, checkEndGame } from './logic/board.js'
 import { WinnerModal } from './components/WinnerModal'
-
+import { saveGameToStorage, resetGameStorage } from './logic/storage'
 function App () {
-  const [board, setBoard] = useState(initialBoard)
-  const [turn, setTurn] = useState(initialTurn)
+  const [board, setBoard] = useState(() => {
+    const boardFromStorage = window.localStorage.getItem('board')
+    if (boardFromStorage) return JSON.parse(boardFromStorage)
+    return initialBoard
+  })
+  const [turn, setTurn] = useState(() => {
+    const turnFromStorage = window.localStorage.getItem('turn')
+    return turnFromStorage ?? initialTurn
+  })
   const [winner, setWinner] = useState(null)
 
   const resetGame = () => {
     setBoard(initialBoard)
     setTurn(initialTurn)
     setWinner(null)
+
+    resetGameStorage()
   }
 
   const updateBoard = ({ index }) => {
@@ -31,15 +40,15 @@ function App () {
       setWinner(false)
     }
 
-    // TODO check is game is over
-
     const newTurn = turn === TURNS.x ? TURNS.o : TURNS.x
     setTurn(newTurn)
+
+    saveGameToStorage({ board: newBoard, turn: newTurn })
   }
 
   return (
     <main className='board'>
-      <h1>TicTacToe</h1>
+      <h1>Tic Tac Toe</h1>
       <section className='game'>
         {
           board.map((_, index) => {
