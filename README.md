@@ -1,10 +1,10 @@
 # Tic Tac Toe
 
-**Spanish** 🟥
+🟥 **Español**
 
 Una implementación simple del juego clásico Tic Tac Toe, desarrollado con React
 
-**English** 🟦 
+🟦 **English**
 
 Basic implementation of the classic Tic Tac Toe game using React.
 
