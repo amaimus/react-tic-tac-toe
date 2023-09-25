@@ -1,6 +1,10 @@
 # Tic Tac Toe
 
-Basic implementation of the classic Tic Tac Toe game using React.
+Spanish 🟥
+  Una implementación simple del juego clásico Tic Tac Toe, desarrollado con React
+
+English 🟦 
+  Basic implementation of the classic Tic Tac Toe game using React.
 
 ![react-tic-tac-toe](https://github.com/amaimus/react-tic-tac-toe/assets/35699916/87442cb0-44bc-4cc1-9352-13545f7779a1)
 
